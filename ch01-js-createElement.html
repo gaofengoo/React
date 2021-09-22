@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>创建DOM</title>
+</head>
+<body>
+	<div id="id-div-react"></div>
+	<script type="text/javascript">
+		var divReact = document.getElementById('id-div-react');
+		const jsSpan = document.createElement('span');
+		const jsH3 = document.createElement('h3');
+		jsH3.innerText = 'JavaScript DOM';
+		const jsP = document.createElement('p');
+		jsP.innerText = 'Create dom by JavaScript createElement() func.';
+		jsSpan.appendChild(jsH3);
+		jsSpan.appendChild(jsP);
+		divReact.appendChild(jsSpan);
+	</script>
+</body>
+</html>
