@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>react函数组件</title>
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+	<div id="id-div-react"></div>
+	<script type="text/babel">
+		var divReact = document.getElementById('id-div-react');
+		function HelloReactComp () {
+			return <p>Hello, this is a React functional component.</p>
+		}
+		const eleHello = <HelloReactComp/>;
+		const reactSpan = (
+			<span>
+				<h3>React Component - Function Component</h3>
+				{eleHello}
+			</span>
+		);
+		ReactDOM.render(reactSpan, divReact);
+	</script>
+</body>
+</html>

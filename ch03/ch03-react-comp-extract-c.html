@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>react组件切分于提取</title>
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+	<div id="id-div-react"></div>
+	<script type="text/babel">
+		var divReact = document.getElementById('id-div-react');
+		function formaDate (date) {
+			return date.toLocaleDateString();
+		}
+		const avatar = {
+			url: 'image/avatar.png',
+			alt: 'loading...',
+			nickname: 'Leo King'
+		};
+		const userinfo = {
+			id: '007',
+			name: 'King de. wang',
+			gender: 'male',
+			age: '18',
+			email: 'king@email.com'
+		};
+		const date = {
+			date: formaDate(new Date())
+		};	
+		function Avatar (props) {
+			return (
+				<span className="cssAvatar">
+					<img className="cssAvaterImg" 
+						src={props.avatar.url} 
+						alt={props.avatar.alt} 
+					/>
+					<p className="p-center">Nickname: {props.avatar.nickname}</p>
+				</span>
+			);
+		}
+		function UserInfo (props) {
+			return (
+				<span className="classUserinfo">
+					<p className="p-left">Id: {props.userinfo.id}</p>
+					<p className="p-left">Name: {props.userinfo.name}</p>
+					<p className="p-left">Gender: {props.userinfo.gender}</p>
+					<p className="p-left">Age: {props.userinfo.age}</p>
+					<p className="p-left">Email: {props.userinfo.email}</p>
+				</span>
+			);
+		}
+		function UserDetail (props) {
+			return (
+				<div className="cssUserDetail">
+					<Avatar avatar={props.avatar} />
+					<UserInfo userinfo={props.userinfo} />
+					<span className="cssDate">
+						<p className="p-right">Date: {props.date.date}</p>
+					</span>
+				</div>
+			);
+		}
+		const userDetail = <UserDetail
+			avatar={avatar}
+			userinfo={userinfo}
+			date={date}
+		/>;
+		const reactSpan = (
+			<span>
+				<h3>React Props - defaultProps</h3>
+				{userDetail}
+			</span>
+		);
+		ReactDOM.render(reactSpan, divReact);
+	</script>
+</body>
+</html>
